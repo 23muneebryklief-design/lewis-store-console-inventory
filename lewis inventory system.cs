@@ -10,91 +10,96 @@ namespace lewis_store_inventory_system
                 string[] itemDescriptions = new string[MAX_ITEMS];
                 double[] itemPrices = new double[MAX_ITEMS];
                 int[] itemQuantities = new int[MAX_ITEMS];
-                   
-                // tracks how many items exist
                 int itemCount = 0;
                 const double VAT = 0.15;
-
+                
 
             bool running = true;
             while (running)
             {
-                Console.WriteLine("\n=== LEWIS STORE INVENTORY SYSTEM ===");
+                Console.WriteLine("======================================================");
+                Console.WriteLine("*********LEWIS STORE INVENTORY SYSTEM*********");
+                Console.WriteLine("======================================================");
                 Console.WriteLine("1. Add Stock");
                 Console.WriteLine("2. View Stock");
                 Console.WriteLine("3. Sell Item");
                 Console.WriteLine("4. Exit");
-                Console.Write("Select option: ")
-                int choice = int.Parse(Console.ReadLine());
-                if (choice<1 || choice>4)
-                {
-                    Console.WriteLine("Invalid Option);
-                    return;
-                 }                     
+                Console.WriteLine("Enter Option: ");
+                 int choice = int.Parse(Console.ReadLine());
+                if (choice < 1 || choice > 4)
+                  {
+                     Console.WriteLine("Invalid Option. Please try again.");
+                     continue;  
+                  }
 
-                switch(choice)
-                                      
-                if (choice == 1)
-                {
-
-                    {
-                        if (itemCount >= MAX_ITEMS)
+               switch (choice)
+               {
+                 case 1:
+                         Console.WriteLine("**********Add Stock*********");
+                        if (itemCount>=MAX_ITEMS)
                         {
-                            Console.WriteLine("Inventory is full. Cannot add more items.");
-                            return;
+                            Console.WriteLine("The inventory is full");
+                            break;
                         }
-
-                        Console.Write("Enter item name: ");
+                        Console.WriteLine("===============================");
+                        Console.WriteLine("Enter the name of the item: ");
                         string name = Console.ReadLine();
-
-                        Console.Write("Enter item description: ");
+                        while  (string.IsNullOrWhiteSpace(name))
+                        {
+                             Console.WriteLine("===============================");
+                            Console.WriteLine("Item name cannot be empty. Enter name:");
+                            name = Console.ReadLine();
+                        }
+                         Console.WriteLine("===============================");
+                        Console.WriteLine("Enter Item Description: ");
                         string description = Console.ReadLine();
-
-                        // Validate price
+                        if (string.IsNullOrWhiteSpace(description))
+                        {
+                             Console.WriteLine("===============================");
+                             Console.WriteLine("Description cannot be empty. Enter the description");
+                            description = Console.ReadLine();
+                        }
+                        Console.WriteLine("===============================");
+                        Console.WriteLine("Enter The Price Of The Product: ");
                         double price;
-                        Console.Write("Enter price (excluding VAT): ");
+
                         while (!double.TryParse(Console.ReadLine(), out price) || price < 0)
                         {
-                            Console.Write("Invalid price. Enter a positive number: ");
+                            Console.WriteLine("===============================");
+                          Console.WriteLine("Invalid price. Enter a valid positive number:");
                         }
-
-                        // Validate quantity
-                        int quantity;
-                        Console.Write("Enter quantity: ");
-                        while (!int.TryParse(Console.ReadLine(), out quantity) || quantity < 0)
+                        Console.WriteLine("===============================");
+                        Console.WriteLine("Enter The Item Quantity: ");
+                        int qty;
+                        while (!int.TryParse(Console.ReadLine(), out qty) || qty < 0)
                         {
-                            Console.Write("Invalid quantity. Enter a non-negative integer: ");
+                            Console.WriteLine("===============================");
+                            Console.WriteLine("Invalid quantity. Enter a valid quantity: ");
                         }
+                         itemNames[itemCount] = name;
+                         itemDescriptions[itemCount] = description;
+                         itemPrices[itemCount] = price;
+                         itemQuantities[itemCount] = qty;
+                         itemCount++;
+                        Console.WriteLine("+++++++Item Added Successfully!++++++");
+                        break;
 
-                        itemNames[itemCount] = name;
-                        itemDescriptions[itemCount] = description;
-                        itemPrices[itemCount] = price;
-                        itemQuantities[itemCount] = quantity;
+                
+                
+                 case 2:
+                 Console.WriteLine("View Stock selected.");
+                 break;
 
-                        itemCount++;
+                case 3:
+                Console.WriteLine("Sell Item selected.");
+                 break;
 
-                        Console.WriteLine("Stock item added successfully.");
-                    }
-                }
-                else if (choice == 2)
-                {
-                    
-                }
-                else if (choice == 3)
-                {
-                    Console.WriteLine("chose 3");
-                }
-                else if (choice == 4)
-                {
-                    bool ruuning = false;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid");
-                }
-
+                case 4:
+                 running = false;   
+                 Console.WriteLine("Exiting system...");
+                break;
+              }
             }
-
         }
     }
 }
