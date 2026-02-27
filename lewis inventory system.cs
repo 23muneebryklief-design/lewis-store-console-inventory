@@ -4,7 +4,17 @@ namespace lewis_store_inventory_system
     {
         static void Main(string[] args)
         {
-          
+             const int MAX_ITEMS = 100;
+
+                string[] itemNames = new string[MAX_ITEMS];
+                string[] itemDescriptions = new string[MAX_ITEMS];
+                double[] itemPrices = new double[MAX_ITEMS];
+                int[] itemQuantities = new int[MAX_ITEMS];
+                   
+                // tracks how many items exist
+                int itemCount = 0;
+                const double VAT = 0.15;
+
 
             bool running = true;
             while (running)
@@ -14,21 +24,16 @@ namespace lewis_store_inventory_system
                 Console.WriteLine("2. View Stock");
                 Console.WriteLine("3. Sell Item");
                 Console.WriteLine("4. Exit");
-                Console.Write("Select option: ");
-               
-                const int MAX_ITEMS = 100;
-
-                string[] itemNames = new string[MAX_ITEMS];
-                string[] itemDescriptions = new string[MAX_ITEMS];
-                double[] itemPrices = new double[MAX_ITEMS];
-                int[] itemQuantities = new int[MAX_ITEMS];
-
-                // tracks how many items exist
-                int itemCount = 0;
-
+                Console.Write("Select option: ")
                 int choice = int.Parse(Console.ReadLine());
+                if (choice<1 || choice>4)
+                {
+                    Console.WriteLine("Invalid Option);
+                    return;
+                 }                     
 
-
+                switch(choice)
+                                      
                 if (choice == 1)
                 {
 
