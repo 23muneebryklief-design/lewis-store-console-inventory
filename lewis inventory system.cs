@@ -88,6 +88,25 @@ namespace lewis_store_inventory_system
                 
                  case 2:
                  Console.WriteLine("View Stock selected.");
+                Console.WriteLine("_______________________");
+                    if (itemCount == 0)
+                    {
+                        Console.WriteLine("No items in inventory.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Current Stock");
+                        for (int i = 0; i < itemCount; i++)
+                        {
+                            Console.WriteLine($"Item {i + 1}:");
+                            Console.WriteLine($"Name: {itemNames[i]}");
+                            Console.WriteLine($"Description: {itemDescriptions[i]}");
+                            Console.WriteLine($"Price: {itemPrices[i]:C}");
+                            Console.WriteLine($"Quantity: {itemQuantities[i]}");
+                            Console.WriteLine("_______________________");
+
+                        }
+                    }
                  break;
 
                 case 3:
