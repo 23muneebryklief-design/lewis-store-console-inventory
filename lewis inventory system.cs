@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace lewis_store_inventory_system
 {
     internal class Program
@@ -110,9 +112,35 @@ namespace lewis_store_inventory_system
                  break;
 
                 case 3:
-                Console.WriteLine("Sell Item selected.");
-                 break;
-
+                Console.WriteLine("What item would you like to sell?");
+                Console.WriteLine("===============================");
+                Console.WriteLine("Current Stock");
+                for (int i = 0; i < itemCount; i++)
+                {
+                    Console.WriteLine($"{i + 1} |1 {itemNames[i]} | Quantity: {itemQuantities[i]} | Price: {itemPrices[i]:C}");
+                }
+                Console.WriteLine("===============================");
+                Console.WriteLine("Enter the item number to sell: ");
+                Console.WriteLine("===============================");
+                int itemNumber;
+                while (!int.TryParse(Console.ReadLine(), out itemNumber) || itemNumber < 1 || itemNumber > itemCount)
+                {
+                    Console.WriteLine("===============================");
+                    Console.WriteLine("Invalid item number. Enter a valid item number:");
+                }
+                int index = itemNumber - 1;
+                Console.WriteLine("Enter quantity to sell: ");
+                int sellQty;
+                while (!int.TryParse(Console.ReadLine(), out sellQty) || sellQty < 1 || sellQty > itemQuantities[index])
+                {
+                    Console.WriteLine("===============================");
+                    Console.WriteLine("Invalid quantity. Enter a valid quantity to sell:");
+                }
+                itemQuantities[index] -= sellQty;
+                double totalPrice = sellQty * itemPrices[index];
+                double totalPriceWithVAT = totalPrice * (1 + VAT);
+                Console.WriteLine($"Total price (including VAT): {totalPriceWithVAT:C}");
+                    break;
                 case 4:
                  running = false;   
                  Console.WriteLine("Exiting system...");
