@@ -90,7 +90,7 @@ namespace lewis_store_inventory_system
                 
                  case 2:
                  Console.WriteLine("View Stock selected.");
-                Console.WriteLine("_______________________");
+                 Console.WriteLine("_______________________");
                     if (itemCount == 0)
                     {
                         Console.WriteLine("No items in inventory.");
