@@ -117,7 +117,7 @@ namespace lewis_store_inventory_system
                 Console.WriteLine("Current Stock");
                 for (int i = 0; i < itemCount; i++)
                 {
-                    Console.WriteLine($"{i + 1} |1 {itemNames[i]} | Quantity: {itemQuantities[i]} | Price: {itemPrices[i]:C}");
+                    Console.WriteLine($"{i + 1} | {itemNames[i]} | Quantity: {itemQuantities[i]} | Price: {itemPrices[i]:C}");
                 }
                 Console.WriteLine("===============================");
                 Console.WriteLine("Enter the item number to sell: ");
