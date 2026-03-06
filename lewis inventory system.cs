@@ -1,3 +1,4 @@
+
 using System.Diagnostics;
 
 namespace lewis_store_inventory_system
@@ -113,8 +114,6 @@ namespace lewis_store_inventory_system
 
                 case 3:
                 Console.WriteLine("What item would you like to sell?");
-                Console.WriteLine("===============================");
-                Console.WriteLine("Current Stock");
                 for (int i = 0; i < itemCount; i++)
                 {
                     Console.WriteLine($"{i + 1} | {itemNames[i]} | Quantity: {itemQuantities[i]} | Price: {itemPrices[i]:C}");
@@ -138,12 +137,12 @@ namespace lewis_store_inventory_system
                 }
                 itemQuantities[index] -= sellQty;
                 double totalPrice = sellQty * itemPrices[index];
-                double totalPriceWithVAT = totalPrice * (1 + VAT);
-                Console.WriteLine($"Total price (including VAT): {totalPriceWithVAT:C}");
-                    break;
+                double totalPriceWithVAT = totalPrice * (1 + VAT); 
+
+                 break;
                 case 4:
                  running = false;   
-                 Console.WriteLine("Exiting system...");
+                 Console.WriteLine("Thank you. Bye!");
                 break;
               }
             }
