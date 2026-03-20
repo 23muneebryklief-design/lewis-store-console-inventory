@@ -294,12 +294,16 @@ namespace lewis_store_inventory_system
                         itemQuantities[index] -= sellQty;
 
                         // Display sale summary
-                        Console.WriteLine("Sale completed successfully.");
-                        Console.WriteLine($"Item: {itemNames[index]}");
-                        Console.WriteLine($"Quantity sold: {sellQty}");
-                        Console.WriteLine($"Subtotal: {subtotal:C}");
-                        Console.WriteLine($"VAT (15%): {vatAmount:C}");
-                        Console.WriteLine($"Total: {total:C}");
+                        Console.WriteLine("\n========== SALE RECEIPT ==========");
+                        Console.WriteLine($"Item:           {itemNames[index]}");
+                        Console.WriteLine($"Quantity:       {sellQty}");
+                        Console.WriteLine("----------------------------------");
+                        Console.WriteLine($"Subtotal:       {subtotal:C}");
+                        Console.WriteLine($"VAT (15%):      {vatAmount:C}");
+                        Console.WriteLine("----------------------------------");
+                        Console.WriteLine($"TOTAL:          {total:C}");
+                        Console.WriteLine("==================================");
+                        Console.WriteLine("Sale completed successfully.\n");
                         break;
 
                     case 4:
